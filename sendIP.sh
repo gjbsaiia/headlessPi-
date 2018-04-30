@@ -4,18 +4,6 @@
 
 # This allows for a completely headless setup - no display needed.
 
-#writes 'ip addr' command to file
-echo $(ip addr) > currentIP.txt;
-#python script that edits and rewrites the file, so it's just IPs
-python processIP.py;
-echo "current address written"
-sleep 1;
-echo "sending mail.."
-sleep 1;
-#calls a shell script that prints all smtp commands into the window
-#pipes this with an smtp server request
-./smtpCommands.sh | telnet smtp.server.here 25
-echo "address sent."
 
 # allows quick changes to all smtp request specifiers
 
@@ -34,3 +22,17 @@ echo "data" <~/Desktop/car/email_IP/commands/contents.txt
 echo "." < ~/Desktop/car/email_IP/commands/endMsg.txt
 #close connection command
 echo "quit" < ~/Desktop/car/email_IP/commands/quit.txt
+
+
+#writes 'ip addr' command to file
+echo $(ip addr) > currentIP.txt;
+#python script that edits and rewrites the file, so it's just IPs
+python processIP.py;
+echo "current address written"
+sleep 1;
+echo "sending mail.."
+sleep 1;
+#calls a shell script that prints all smtp commands into the window
+#pipes this with an smtp server request
+./smtpCommands.sh | telnet smtp.server.here 25
+echo "address sent."
