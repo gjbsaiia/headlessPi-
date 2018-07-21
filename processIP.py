@@ -7,7 +7,7 @@ import sys
 
 #cleans up the output of the terminal "ip addr" command
 def main():
-	filename = "currentIP.txt"
+	filename = "~/Desktop/car/emailIP/currentIP.txt"
 	ip = []
 	with open(filename) as f:
 		lines = f.readlines()
